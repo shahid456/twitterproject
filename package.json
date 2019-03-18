@@ -1,0 +1,35 @@
+{
+  "name": "twitter",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "fetch-tweets": "^0.1.7",
+    "history": "^1.17.0",
+    "oauth-signature": "^1.5.0",
+    "react": "^16.8.4",
+    "react-debounce-input": "^3.2.0",
+    "react-dom": "^16.8.4",
+    "react-router": "^4.4.0",
+    "react-router-dom": "^4.4.0",
+    "react-scripts": "2.1.8",
+    "twit": "^2.2.11"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.3.4"
+  }
+}

@@ -1,0 +1,119 @@
+body {
+  font-size: 14pt;
+}
+#container1 {
+  display: flex;
+  flex-direction: row;
+}
+#search {
+  width: 80%;
+  margin: auto;
+  display: block;
+  text-align: center;
+  margin-top: 150px;
+}
+
+#searchin {
+  float: left;
+  width: 70%;
+  margin-right: 20px;
+  height: 30px;
+}
+
+#btnsearch {
+  float: left;
+  width: 10%;
+  height: 35px;
+  background-color: #333;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+#list {
+  padding: 0;
+  list-style-type: none;
+  position: absolute;
+  z-index: 9999;
+  width: 80%;
+  margin-top: 30px;
+  max-height: 120px;
+}
+
+#list > li {
+  text-align: left;
+  padding: 5px;
+}
+
+#list > li:hover {
+  background-color: #eee;
+}
+
+header,
+footer {
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+}
+header .profile-thumbnail {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+}
+header .profile-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+}
+header .follow-btn {
+  display: flex;
+
+  margin: 0 0 0 auto;
+}
+header .follow-btn button {
+  border: 0;
+  border-radius: 3px;
+  padding: 5px;
+}
+header h3,
+header h4 {
+  display: flex;
+
+  margin: 0;
+}
+#inner {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+}
+#inner p {
+  margin-bottom: 10px;
+  font-size: 20px;
+  text-align: left;
+}
+.date {
+  text-align: left;
+}
+#inner hr {
+  margin: 20px 0;
+  border-style: solid;
+  opacity: 0.1;
+}
+footer .stats {
+  display: flex;
+  font-size: 15px;
+}
+footer .stats strong {
+  font-size: 18px;
+}
+footer .stats .likes {
+  margin-left: 10px;
+}
+footer .cta {
+  margin-left: auto;
+}
+footer .cta button {
+  border: 0;
+  background: transparent;
+}
