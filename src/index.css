@@ -43,6 +43,7 @@ body {
 #list > li {
   text-align: left;
   padding: 5px;
+  color: black;
 }
 
 #list > li:hover {
@@ -116,4 +117,27 @@ footer .cta {
 footer .cta button {
   border: 0;
   background: transparent;
+}
+.TitleBar {
+  background-color: dimgray;
+}
+
+.textAlign {
+  text-align: center;
+  color: whitesmoke;
+}
+
+.NavBar {
+  display: flex;
+  flex-direction: row;
+}
+
+.btnNav {
+  border: 3px;
+  background: transparent;
+  height: 35px;
+  font-size: 1.5em;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-right: 10px;
+  color: dimgray;
 }

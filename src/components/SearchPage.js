@@ -44,7 +44,7 @@ class SearchPage extends React.Component {
       queryValue = encodeURIComponent(value);
       query = "screen_name=" + queryValue;
     } else if (value[0] == "#") {
-      url = TWEET_SEARCH;
+      url = NAME_SEARCH;
       queryValue = encodeURIComponent(value.slice(1, value.length));
       query = "q=" + queryValue;
     } else {
@@ -64,10 +64,10 @@ class SearchPage extends React.Component {
       predictedIds.push(data["id_str"]);
     } else if (value[0] == "#") {
       let len = 0;
-      data["statuses"].length > 4 ? (len = 5) : (len = data["statuses"].length);
+      data.length > 4 ? (len = 5) : (len = data.length);
       for (let k = 0; k < len; k++) {
-        predicted.push(data["statuses"][k]["text"]);
-        predictedIds.push(data["statuses"][k]["id_str"]);
+        predicted.push(data[k]["name"]);
+        predictedIds.push(data[k]["screen_name"]);
       }
     } else {
       let len = 0;
@@ -94,7 +94,6 @@ class SearchPage extends React.Component {
       })
       .then(data => {
         let predicted = this.getPredictions(data, value);
-
         this.setState({
           predictions: predicted[0],
           userIds: predicted[1]
@@ -134,7 +133,7 @@ class SearchPage extends React.Component {
             <Link
               to={{
                 pathname: "/TweetsPage",
-                state: this.state.statuses
+                state: this.state.value
               }}
             >
               Search
@@ -147,7 +146,10 @@ class SearchPage extends React.Component {
               <li key={index + item}>
                 {this.state.value[0] == "#" ? (
                   <Link
-                    to={{ pathname: TWEET_PATH, state: this.state.statuses }}
+                    to={{
+                      pathname: USER_PATH,
+                      state: this.state.userIds[index]
+                    }}
                   >
                     {item}
                   </Link>
@@ -172,6 +174,11 @@ class SearchPage extends React.Component {
                 )}
               </li>
             ))}
+            <li key={"All Result"}>
+              <Link to={{ pathname: TWEET_PATH, state: this.state.value }}>
+                See All Results
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
