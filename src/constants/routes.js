@@ -1,2 +1,2 @@
-export const TWEET_PATH = "/TweetsPage";
-export const USER_PATH = "/UsersPage";
+export const TWEET_PATH = "/tweetspage";
+export const USER_PATH = "/user/:userId";

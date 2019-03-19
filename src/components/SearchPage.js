@@ -45,8 +45,8 @@ class SearchPage extends React.Component {
       query = "screen_name=" + queryValue;
     } else if (value[0] == "#") {
       url = TWEET_SEARCH;
-      queryValue = encodeURIComponent(value);
-      query = "q=" + queryValue + "&include_entites=true";
+      queryValue = encodeURIComponent(value.slice(1, value.length));
+      query = "q=" + queryValue;
     } else {
       url = NAME_SEARCH;
       queryValue = encodeURIComponent(value);
@@ -69,9 +69,6 @@ class SearchPage extends React.Component {
         predicted.push(data["statuses"][k]["text"]);
         predictedIds.push(data["statuses"][k]["id_str"]);
       }
-      this.setState({
-        statuses: data["statuses"]
-      });
     } else {
       let len = 0;
       data.length > 4 ? (len = 5) : (len = data.length);
