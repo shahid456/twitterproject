@@ -12,13 +12,14 @@ class TweetsPage extends React.Component {
     super(props);
     this.state = {
       tweets: "",
+      displayedTweets: "",
       users: "",
-      isLoading: false,
-      cursor: 0
+      cursor: 1,
+      lastValue: 0
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     let value = this.props.location.state;
     let url = TWEET_SEARCH + "q=" + encodeURIComponent(value) + INC_ENTITIES;
     this.setTweetsUsers(url, "#");
@@ -41,6 +42,7 @@ class TweetsPage extends React.Component {
         return response.json();
       })
       .then(data => {
+        console.log(data);
         if (check == "#") {
           this.setState({
             tweets: data["statuses"]
@@ -57,32 +59,28 @@ class TweetsPage extends React.Component {
   };
 
   loadMore = () => {
-    let url =
-      TWEET_SEARCH +
-      "q=" +
-      encodeURIComponent(this.props.location.state) +
-      INC_ENTITIES;
-    this.setState({ isLoading: true, error: undefined });
-    fetch(url)
-      .then(res => res.json())
-      .then(
-        res => {
-          let status = res["statuses"];
-          let len = this.state.tweets.length;
-          let tweets = [...this.state.tweets, ...status];
-          console.log(tweets);
-          console.log(status);
-          len = tweets.length == len;
-          this.setState({
-            tweets: [...this.state.tweets, ...status],
-            cursor: len,
-            isLoading: false
-          });
-        },
-        error => {
-          this.setState({ isLoading: false, error });
-        }
+    let lastValue = this.state.lastValue;
+    let status = [];
+
+    if (lastValue + 5 < this.state.tweets.length) {
+      status = this.state.tweets.slice(lastValue, lastValue + 5);
+    } else if (lastValue < this.state.tweets.length) {
+      status = this.state.tweets.slice(
+        lastValue,
+        this.state.tweets.length - lastValue
       );
+    }
+    if (lastValue + 5 < this.state.tweets.length) {
+      console.log(lastValue);
+      this.setState({
+        displayedTweets: status,
+        lastValue: lastValue + 5
+      });
+    } else {
+      this.setState({
+        cursor: 0
+      });
+    }
   };
 
   loadTweets = () => {
@@ -116,8 +114,8 @@ class TweetsPage extends React.Component {
             hasMore={!!this.state.cursor}
             loadMore={this.loadMore}
           >
-            {this.state.tweets.length > 0
-              ? this.state.tweets.map(item => (
+            {this.state.displayedTweets.length > 0
+              ? this.state.displayedTweets.map(item => (
                   <TweetsFormat key={item["id_str"]} status={item} />
                 ))
               : null}
