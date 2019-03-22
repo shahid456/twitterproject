@@ -71,7 +71,6 @@ class TweetsPage extends React.Component {
       );
     }
     if (lastValue + 5 < this.state.tweets.length) {
-      console.log(lastValue);
       this.setState({
         displayedTweets: status,
         lastValue: lastValue + 5
@@ -103,7 +102,7 @@ class TweetsPage extends React.Component {
             Users
           </button>
         </div>
-        <div style={{ height: "700px, overflow, auto" }}>
+        <div style={{ overflowY: "auto" }}>
           <InfiniteScroll
             pageStart={0}
             loader={

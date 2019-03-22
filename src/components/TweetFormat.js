@@ -7,7 +7,7 @@ class TweetFormat extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={this.props.style}>
         <header>
           <img src={this.props.status["user"]["profile_image_url"]} />
           <div className="profile-name">

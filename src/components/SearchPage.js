@@ -94,6 +94,7 @@ class SearchPage extends React.Component {
       })
       .then(data => {
         let predicted = this.getPredictions(data, value);
+        predicted[0].push("See All Results");
         this.setState({
           predictions: predicted[0],
           userIds: predicted[1]
@@ -144,23 +145,9 @@ class SearchPage extends React.Component {
           <ul id="list">
             {this.state.predictions.map((item, index) => (
               <li key={index + item}>
-                {this.state.value[0] == "#" ? (
-                  <Link
-                    to={{
-                      pathname: USER_PATH,
-                      state: this.state.userIds[index]
-                    }}
-                  >
-                    {item}
-                  </Link>
-                ) : this.state.value[0] == "@" ? (
-                  <Link
-                    to={{
-                      pathname: USER_PATH,
-                      state: this.state.value
-                    }}
-                  >
-                    {item}
+                {item == "See All Results" ? (
+                  <Link to={{ pathname: TWEET_PATH, state: this.state.value }}>
+                    See All Results
                   </Link>
                 ) : (
                   <Link
@@ -174,11 +161,6 @@ class SearchPage extends React.Component {
                 )}
               </li>
             ))}
-            <li key={"All Result"}>
-              <Link to={{ pathname: TWEET_PATH, state: this.state.value }}>
-                See All Results
-              </Link>
-            </li>
           </ul>
         </div>
       </div>

@@ -4,11 +4,12 @@ body {
 #container1 {
   display: flex;
   flex-direction: row;
+  border: 5px;
 }
 #search {
   width: 80%;
   margin: auto;
-  display: block;
+
   text-align: center;
   margin-top: 150px;
 }
@@ -36,7 +37,6 @@ body {
   position: absolute;
   z-index: 9999;
   width: 80%;
-  margin-top: 30px;
   max-height: 120px;
 }
 
@@ -69,7 +69,6 @@ header .profile-name {
 }
 header .follow-btn {
   display: flex;
-
   margin: 0 0 0 auto;
 }
 header .follow-btn button {
