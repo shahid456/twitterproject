@@ -10,12 +10,11 @@ class UsersPage extends React.Component {
       value: ""
     };
   }
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps.location.state);
+  componentWillMount() {
     console.log(this.props.location.state);
     fetch(
       USER_TIMELINE +
-        "screen_name" +
+        "screen_name=" +
         this.props.location.state +
         "&include_rts=false&exclude_replies=true"
     )
@@ -31,7 +30,7 @@ class UsersPage extends React.Component {
       .then(data => {
         console.log(data);
       })
-      .catchfunction(function(err) {
+      .catch(function(err) {
         console.log("Fetch Erro :-S", err);
       });
   }

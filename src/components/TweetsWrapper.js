@@ -15,7 +15,6 @@ export default function TweetsWrapper({
   const isItemLoaded = index => !hasNextPage || index < items.length;
   const Item = ({ index, style }) => {
     let content;
-    console.log(style);
     if (!isItemLoaded(index)) {
       content = "Loading...";
     } else {
@@ -35,9 +34,9 @@ export default function TweetsWrapper({
       {({ onItemsRendered, ref }) => (
         <List
           className="List"
-          height={400}
+          height={520}
           itemCount={itemsCount}
-          itemSize={200}
+          itemSize={230}
           onItemsRendered={onItemsRendered}
           ref={ref}
           width="100%"

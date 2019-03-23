@@ -142,7 +142,7 @@ class SearchPage extends React.Component {
           </button>
         </div>
         <div id="container2">
-          <ul id="list">
+          <ul className="list">
             {this.state.predictions.map((item, index) => (
               <li key={index + item}>
                 {item == "See All Results" ? (

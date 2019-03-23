@@ -7,6 +7,7 @@ import {
   INC_ENTITIES
 } from "../constants/api-endpoints";
 import TweetsFormat from "./TweetFormat";
+import UserTweetsPage from "./UserTweetsPage";
 import "../index.css";
 class TweetsPageTesting extends React.PureComponent {
   state = {
@@ -32,8 +33,7 @@ class TweetsPageTesting extends React.PureComponent {
       .then(data => {
         if (check == "#") {
           this.setState({
-            tweets: data["statuses"],
-            next_url: data["search_metadata"]["max_id"]
+            tweets: data["statuses"]
           });
         } else {
           this.setState({
@@ -85,6 +85,12 @@ class TweetsPageTesting extends React.PureComponent {
       items: []
     });
   };
+  componentDidMount() {
+    let value = this.props.location.state;
+    this.setTweetsUsers(
+      NAME_SEARCH + "q=" + value.slice(1, value.length) + "&page=10&count=5"
+    );
+  }
   render() {
     const hasNextPage = this.state.hasNextPage;
     const isNextPageLoading = this.state.isNextPageLoading;
@@ -112,9 +118,7 @@ class TweetsPageTesting extends React.PureComponent {
             />
           </div>
         ) : (
-          <div>
-            <h1>users</h1>
-          </div>
+          <UserTweetsPage users={this.state.users} />
         )}
       </Fragment>
     );
